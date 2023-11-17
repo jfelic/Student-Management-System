@@ -28,13 +28,14 @@ public class App {
         Scanner in = new Scanner(System.in);
         System.out.println("How many students will you be entering into the database?");
         int numOfStudents = in.nextInt();
+        Student[] students = new Student[numOfStudents];
 
         for(int i = 0; i < numOfStudents; i++) {
-            Student stu = new Student();
+            in.nextLine();
+            students[i] = new Student(in);
         }
-
 
         in.close();
-        }
     }
+}
 

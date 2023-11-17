@@ -12,23 +12,20 @@ public class Student {
     private static int cost = 600;
 
     //Constructor
-    public Student() {
-        Scanner in = new Scanner(System.in);
+    public Student(Scanner in) {
 
-        System.out.println("Enter student's first name: ");
+        System.out.print("Enter student's first name: ");
         this.firstName = in.nextLine();
 
-        System.out.println("Enter student's last name: ");
+        System.out.print("Enter student's last name: ");
         this.lastName = in.nextLine();
 
         System.out.println("1 - Freshman\n2 - Sophomore\n3 - Junior\n4 - Senior\nEnter student's current grade level: ");
         this.gradeYear = in.nextInt();
-        in.close();
 
         generateID();
 
         System.out.println(firstName + " " + lastName + " " + gradeYear + " " + studentID);
-        in.close();
     }
 
     public void generateID() {
