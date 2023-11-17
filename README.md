@@ -8,6 +8,7 @@
 -The student should have a 5-digit unique ID, with the first number being their grade level
 ## A student can enroll in the following courses:
 -History 101
+
 -Mathematics 101
 -English 101
 -Chemistry 101
