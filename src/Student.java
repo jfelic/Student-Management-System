@@ -5,13 +5,14 @@ public class Student {
     public String firstName;
     public String lastName;
     public int gradeYear;
-    public String[] courses;
+    public String[] courses = new String[5];
     public String studentID;
     public double balance;
     private static int id = 1000;
     private static int cost = 600;
 
     //Constructor
+    //test
     public Student(Scanner in) {
 
         System.out.print("Enter student's first name: ");
@@ -34,6 +35,39 @@ public class Student {
     }
 
     public void courseEnrollment() {
+        String[] courses = {"History 101", "Mathematics 101", "English 101", "Chemistry 101", "Computer Science 101"};
+        System.out.println("Please enter which courses this student will be enrolling in from this list: ");
+        for (int i = 0; i < courses.length; i++) {
+            System.out.println("-" + courses[i]);
+        }
+        System.out.println("*Enter Q when finished*");
+
+        Scanner in = new Scanner(System.in);
+        
+        for(int i = 0; i < this.courses.length - 1; i++){
+            this.courses[i] = in.nextLine();
+            if(this.courses[i].equals("Q") || this.courses[i].equals("q")) 
+                break;
+        }
+
+        // int i = 0;
+        // do {
+        //     if(i == 5)
+        //         break;
+        //     this.courses[i] = in.nextLine();
+        //     if(this.courses[i].equals("Q") || this.courses[i].equals("q")) 
+        //         break;
+        //     else
+        //         i++;  
+        // }
+        // while (1 != 0);
+
+    // Print enrolled courses
+    System.out.println("Enrolled Courses:");
+    for (String course : this.courses) {
+        System.out.println(course);
+    }
+        in.close();
 
     }
 

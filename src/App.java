@@ -33,6 +33,7 @@ public class App {
         for(int i = 0; i < numOfStudents; i++) {
             in.nextLine();
             students[i] = new Student(in);
+            students[i].courseEnrollment();
         }
 
         in.close();
