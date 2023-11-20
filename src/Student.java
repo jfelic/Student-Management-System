@@ -6,6 +6,7 @@ public class Student {
     public String lastName;
     public int gradeYear;
     public String[] courses = new String[5];
+    public int coursesEnrolled = 0;
     public String studentID;
     public double balance;
     private static int id = 1000;
@@ -15,18 +16,18 @@ public class Student {
     //test
     public Student(Scanner in) {
 
-        System.out.print("Enter student's first name: ");
+        System.out.print("\nEnter student's first name: ");
         this.firstName = in.nextLine();
 
-        System.out.print("Enter student's last name: ");
+        System.out.print("\nEnter student's last name: ");
         this.lastName = in.nextLine();
 
-        System.out.println("1 - Freshman\n2 - Sophomore\n3 - Junior\n4 - Senior\nEnter student's current grade level: ");
+        System.out.println("\nEnter student's current grade level: \n-1 for Freshman\n-2 for Sophomore\n-3 for Junior\n-4 for Senior");
         this.gradeYear = in.nextInt();
 
         generateID();
 
-        System.out.println(firstName + " " + lastName + " " + gradeYear + " " + studentID);
+        System.out.println("\n" + firstName + " " + lastName + " " + gradeYear + " " + studentID);
     }
 
     public void generateID() {
@@ -35,52 +36,45 @@ public class Student {
     }
 
     public void courseEnrollment() {
-        String[] courses = {"History 101", "Mathematics 101", "English 101", "Chemistry 101", "Computer Science 101"};
-        System.out.println("Please enter which courses this student will be enrolling in from this list: ");
-        for (int i = 0; i < courses.length; i++) {
-            System.out.println("-" + courses[i]);
-        }
-        System.out.println("*Enter Q when finished*");
-
         Scanner in = new Scanner(System.in);
-        
-        for(int i = 0; i < this.courses.length - 1; i++){
-            this.courses[i] = in.nextLine();
-            if(this.courses[i].equals("Q") || this.courses[i].equals("q")) 
-                break;
+        String[] courseOptions = {"History 101", "Mathematics 101", "English 101", "Chemistry 101", "Computer Science 101"};
+
+        //User instructions//
+        System.out.println("Please enter which courses this student will be enrolling in from this list (Or enter \'Q\' to quit): ");
+        for (int i = 0; i < courseOptions.length; i++) {
+            System.out.println("-" + courseOptions[i]);
         }
-
-        // int i = 0;
-        // do {
-        //     if(i == 5)
-        //         break;
-        //     this.courses[i] = in.nextLine();
-        //     if(this.courses[i].equals("Q") || this.courses[i].equals("q")) 
-        //         break;
-        //     else
-        //         i++;  
-        // }
-        // while (1 != 0);
-
-    // Print enrolled courses
-    System.out.println("Enrolled Courses:");
-    for (String course : this.courses) {
-        System.out.println(course);
-    }
-        in.close();
-
+        
+        //Storing user input//
+        for(int i = 0; i < this.courses.length; i++){
+            String userInput = in.nextLine();
+            if(userInput.equals("Q") || userInput.equals("q")) {
+                break;
+            } else {
+                this.courses[i] = userInput;
+                this.coursesEnrolled += 1;
+            }
+        }
+        
+        // Print enrolled courses //
+        System.out.println("\nEnrolled Courses:");
+        for (int i = 0; i < this.courses.length; i++) {
+            if(this.courses[i] == null) {this.courses[i] = "Empty";}
+            System.out.println(this.courses[i]);
+        }
     }
 
-    public double enrollmentCost(int numOfClasses) {
-        return 0.0;
+    public void enrollmentCost() {
+        this.balance = this.coursesEnrolled * cost;
+        System.out.println("\nTotal cost: $" + this.balance);
     }
 
     public void getBalance(){
-
+        System.out.println(this.balance);
     }
 
     public void payTuition(double deposit) {
-
+        this.balance = this.balance - deposit;
     }
 
     public void getStatus() {

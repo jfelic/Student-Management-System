@@ -30,12 +30,13 @@ public class App {
         int numOfStudents = in.nextInt();
         Student[] students = new Student[numOfStudents];
 
-        for(int i = 0; i < numOfStudents; i++) {
-            in.nextLine();
-            students[i] = new Student(in);
-            students[i].courseEnrollment();
-            students[i].enrollmentCost();
-        }
+        Student stuTest = new Student(in);
+        // for(int i = 0; i < numOfStudents; i++) {
+        //     in.nextLine();
+        //     students[i] = new Student(in);
+        //     students[i].courseEnrollment();
+        //     students[i].enrollmentCost();
+        // }
 
         in.close();
     }
