@@ -24,10 +24,9 @@ public class Student {
 
         System.out.println("\nEnter student's current grade level: \n-1 for Freshman\n-2 for Sophomore\n-3 for Junior\n-4 for Senior");
         this.gradeYear = in.nextInt();
+        System.out.println();
 
         generateID();
-
-        System.out.println("\n" + firstName + " " + lastName + " " + gradeYear + " " + studentID);
     }
 
     public void generateID() {
@@ -35,8 +34,8 @@ public class Student {
         this.studentID = gradeYear + "" + id;
     }
 
-    public void courseEnrollment() {
-        Scanner in = new Scanner(System.in);
+    public void courseEnrollment(Scanner in) {
+        in.nextLine();
         String[] courseOptions = {"History 101", "Mathematics 101", "English 101", "Chemistry 101", "Computer Science 101"};
 
         //User instructions//
@@ -57,10 +56,10 @@ public class Student {
         }
         
         // Print enrolled courses //
-        System.out.println("\nEnrolled Courses:");
+        System.out.print("\nEnrolled Courses: ");
         for (int i = 0; i < this.courses.length; i++) {
             if(this.courses[i] == null) {this.courses[i] = "Empty";}
-            System.out.println(this.courses[i]);
+            System.out.print(this.courses[i] + " ");
         }
     }
 
@@ -73,11 +72,13 @@ public class Student {
         System.out.println(this.balance);
     }
 
-    public void payTuition(double deposit) {
-        this.balance = this.balance - deposit;
+    public void payTuition(double payment, Scanner in) {
+        this.balance = this.balance - payment;
+        System.out.println("Payment received.\n");
     }
 
     public void getStatus() {
-
+        System.out.printf("Student name: %s %s\nID: %s\nNumber of courses enrolled: %d\nBalance: %.2f\n", 
+        this.firstName, this.lastName, this.studentID, this.coursesEnrolled, this.balance);
     }
 }

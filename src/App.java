@@ -17,7 +17,7 @@
          *      -Each course costs $600 to enroll
          *      -The student should be able to view their balanace and pay 
          *       tuition.
-         *      -To see the status of the student, we should see thier name,
+         *      -To see the status of the student, we should see their name,
          *       ID, courses enrolled, and balance.
          */
 
@@ -33,11 +33,22 @@ public class App {
         for(int i = 0; i < numOfStudents; i++) {
             in.nextLine();
             students[i] = new Student(in);
-            students[i].courseEnrollment();
+            students[i].courseEnrollment(in);
             students[i].enrollmentCost();
+            System.out.println("Would you like to make a payment?(Enter \'y\' for yes or \'n\' for no): ");
+            String answer = in.nextLine();
+            if (answer.equals("y") || answer.equals('Y')){
+                System.out.println("\nPlease enter payment amount: ");
+                double payment = in.nextDouble();
+                in.nextLine();
+                students[i].payTuition(payment, in);
+            } else {
+                System.out.println("\nNo payment received.\n");
+            }
+            students[i].getStatus();
         }
 
-        in.close();
+        System.out.println("");
     }
 }
 
