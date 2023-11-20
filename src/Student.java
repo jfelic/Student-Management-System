@@ -59,7 +59,7 @@ public class Student {
         System.out.print("\nEnrolled Courses: ");
         for (int i = 0; i < this.courses.length; i++) {
             if(this.courses[i] == null) {this.courses[i] = "Empty";}
-            System.out.print(this.courses[i] + " ");
+            System.out.print(this.courses[i] +"," + " ");
         }
     }
 
@@ -78,7 +78,7 @@ public class Student {
     }
 
     public void getStatus() {
-        System.out.printf("Student name: %s %s\nID: %s\nNumber of courses enrolled: %d\nBalance: %.2f\n", 
+        System.out.printf("Student name: %s %s\nID: %s\nNumber of courses enrolled: %d\nBalance: $%.2f\n", 
         this.firstName, this.lastName, this.studentID, this.coursesEnrolled, this.balance);
     }
 }
